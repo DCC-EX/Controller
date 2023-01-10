@@ -1,18 +1,7 @@
-What’s DCC++
-------------
-
-DCC++ is an open-source hardware and software system for the operation of DCC-equipped model railroads.
-
-The system consists of two parts, the DCC++ Base Station and the DCC++ Controller.
-
-The DCC++ Base Station consists of an Arduino micro controller fitted with an Arduino Motor Shield that can be connected directly to the tracks of a model railroad.
-
-The DCC++ Controller provides operators with a customizable GUI to control their model railroad.  It is written in Java using the Processing graphics library and IDE and communicates with the DCC++ Base Station via a standard serial connection over a USB cable or wireless over BlueTooth.
-
 What’s in this Repository
 -------------------------
 
-This repository, Controller, contains a complete DCC++ Graphical User Interface sketch, written in Java, and designed for use within the Processing IDE environment (www.processing.org).  All sketch files are in the folder named DCCpp_Controller.
+This repository, Controller, contains a "fork and fix" of the complete DCC++ Graphical User Interface sketch, written in Java, and designed for use within the Processing IDE environment (www.processing.org).  All sketch files are in the folder named DCCpp_Controller. The original project was written by Gregg E. Berman and abdoned around 2015. In an effort to fix and archive the original DCC++ and the DCC++ Controller, the DCC-EX team moved the software here to provide that last stable version. This Controller will also work with the new and improved EX-CommandStation.
 
 To utilize this sketch, simply download a zip file of this repository and open the file DCCpp_Controller.pde within the DCCpp_Controller folder using your Processing IDE.  Please do not rename the folder containing the sketch code, nor add any files to that folder.  The Processing IDE relies on the structure and name of the folder to properly display and run the code.
 
