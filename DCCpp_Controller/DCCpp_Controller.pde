@@ -141,7 +141,7 @@ void draw(){
   }
     
   int m=millis();
-  if(m-lastTime>250 && aPort!=null && currentMeter.isOn){
+  if(m-lastTime>1000 && aPort!=null && currentMeter.isOn){
     lastTime=m;
     aPort.write("<c>");
   }
