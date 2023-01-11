@@ -67,19 +67,33 @@ void serialEvent(Serial p){
 //////////////////////////////////////////////////////////////////////////
 
 void clientEvent(Client c){
-  String s;
-  s=c.readStringUntil('>');
-  if(s!=null)
-    receivedString(s);
+  if (c.available() > 0) {
+    byte[] buf=c.readBytesUntil('>');
+    if (buf!=null) {
+      String s = new String(buf);
+      if(s!=null) {
+        receivedString(s);
+      }
+    }
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////
 
-  void receivedString(String s){   
+  void receivedString(String in){
+    String s;
+    int pos;
+    for(pos=0; pos<in.length(); pos++) {
+      if(in.charAt(pos)=='<')
+	break;
+    }
+    s=in.substring(pos,in.length());
+//    msgBoxMain.setMessage(s,color(0,150,0));
     if(s.charAt(0)!='<')
       return;
 
     String c=s.substring(2,s.length()-1);
+    c.trim();
   
     switch(s.charAt(1)){
 
@@ -99,7 +113,7 @@ void clientEvent(Client c){
 
       case 'T':
         int[] n=int(splitTokens(c));
-        if(n[0]>cabButtons.size())
+        if(n[0]>cabButtons.size() || n[0] < 1)
           break;
         CabButton t=cabButtons.get(n[0]-1);
         if(n[2]==1)
@@ -175,6 +189,10 @@ void clientEvent(Client c){
       case 'a':
         currentMeter.addSample(int(c));
         break;
+
+      default:
+        msgBoxDiagIn.setMessage(c,color(80,100,50));
+      break;
 
     }
   } // receivedString
